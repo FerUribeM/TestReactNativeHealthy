@@ -35,25 +35,23 @@ public class BeHealthyModule extends ReactContextBaseJavaModule {
         MainApplication mainApplication = (MainApplication) context;
         BeHealthyClient beHealthy = mainApplication.getBeHealthyClient();
         beHealthy.setEnvironment(BeHealthyEnvironment.STAGE);
-        beHealthy.setCommunityId("1");
-        //beHealthy.setProgramName("Makasib");
-        //beHealthy.supportFirebaseAnalytics(false);
-        //beHealthy.setSupportColors(new SupportColors(
-        //        "FF9E1B",
-        //        "004C97",
-        //        "FF9E1B"));
-        String token = "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJmYWJlMDY2ZS1kMWE2LTRkMDMtOTlkZi1hMDI1N2VjOGYxNjgiLCJzdWIiOiI1NDU4MSIsImlzcyI6ImJlLWhlYWx0aHktYXV0aCIsImlkZW50aWZpY2F0aW9uIjoiYmVoZWFsdGh5c3RnYW5kQGdtYWlsLmNvbSIsImNvbW11bml0eUlkIjoxLCJhY2wiOnsicm9sZXMiOlsiVVNFUiJdfSwiaWF0IjoxNjc3NjE4Mjk3LCJleHAiOjE2Nzc2MjkwOTd9.fGulnN0NxQEeQUkHmkmLMhrOfUi3VPCn7No-4oxRTy36mw6iiP5AOQs1AvYgyvMpU6KfSqUkDpFrOwCsH3L8ig";
-        beHealthy.startEnrollment(token);
-        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        //    beHealthy.isUserEnrolled(token).whenCompleteAsync((isEnrolled, throwable) -> {
-        //        Timber.tag("isEnrolled").w("User isEnrolled = %s", isEnrolled);
-        //        if (isEnrolled) {
-        //            beHealthy.startBeHealthy();
-        //        } else {
-        //            beHealthy.startEnrollment(token);
-        //        }
-        //    });
-        //}
+        beHealthy.setCommunityId("6");
+        beHealthy.setProgramName("Makasib");
+        beHealthy.supportFirebaseAnalytics(false);
+        beHealthy.setSupportColors(new SupportColors(
+                "FF9E1B",
+                "004C97",
+                "FF9E1B"));
+        String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmZXJvbWFudGVsQHlvcG1haWwuY29tIiwiZW1haWwiOiJmZXJvbWFudGVsQHlvcG1haWwuY29tIiwibG1zaWQiOiJmZXJvbWFudGVsQHlvcG1haWwuY29tIiwiZXhwIjoxNjc5NDY3NjI4LCJpc3MiOiJPbWFudGVsIiwiaWF0IjoxNjc4NDY3NjI4LCJhdWQiOiJCZUhlYWx0aHkifQ.MslWJgyJfMV1tCWXc-LEbX3wSmCl8X1LF9FE1mENF48";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            beHealthy.isUserEnrolled(token).whenCompleteAsync((isEnrolled, throwable) -> {
+                if (isEnrolled) {
+                    beHealthy.startBeHealthy();
+                } else {
+                    beHealthy.startEnrollment(token);
+                }
+            });
+        }
     }
 
 }

@@ -8,3 +8,6 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.globant.behealthylibrary.data.remote.model.** { <fields>; }
